@@ -23,3 +23,5 @@ cmake .. && make -j4
 popd
 ```
 You then have to install the components in BRAHMS' 'Namespace' - this is a particular directory on your machine (***FIXME: add instructions or modify cmake build to install these automatically***).
+
+You can open the OMM_Antisaccades SpineML project with SpineCreator. The project file to search for from SpineCreator's 'Open project' menu is **spineml/OMM_Antisaccades.proj**.
