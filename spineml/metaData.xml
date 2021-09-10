@@ -1,0 +1,1396 @@
+<modelMetaData>
+ <population name="World">
+  <xPos value="-4.63474"/>
+  <yPos value="12.2378"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="255"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="-29"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Retina_1" style="4" source="World" showlabel="0">
+  <start y="11.7384" x="-5.00183"/>
+  <curves>
+   <curve>
+    <C1 ypos="9.80263" xpos="-4.94177"/>
+    <C2 ypos="9.65176" xpos="-6.28813"/>
+    <end ypos="9.23962" xpos="-5.1956"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to Retina_1 Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Retina_2" style="4" source="World" showlabel="0">
+  <start y="11.7383" x="-4.70004"/>
+  <curves>
+   <curve>
+    <C1 ypos="10.6663" xpos="-4.64873"/>
+    <C2 ypos="10.8723" xpos="-4.85654"/>
+    <end ypos="10.9358" xpos="-3.98393"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to Retina_2 Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="FEF_add_noise" style="4" source="World" showlabel="0">
+  <start y="12.7382" x="-5.04823"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.9441" xpos="-4.96659"/>
+    <C2 ypos="14.72" xpos="-5.01"/>
+    <end ypos="14.5094" xpos="-3.46559"/>
+   </curve>
+  </curves>
+  <synapseConnection name="World to FEF_add_noise Synapse 0 weight_update"/>
+ </projection>
+ <population name="Retina_1">
+  <xPos value="-4.36695"/>
+  <yPos value="9.25165"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="255" green="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_sup" style="4" source="Retina_1" showlabel="0">
+  <start y="9.21186" x="-3.51952"/>
+  <curves>
+   <curve>
+    <C1 ypos="9.1836" xpos="-2.84086"/>
+    <C2 ypos="9.37968" xpos="-2.73378"/>
+    <end ypos="9.34608" xpos="-1.4975"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Retina_1 to SC_sup Synapse 0 weight_update"/>
+ </projection>
+ <population name="Retina_2">
+  <xPos value="-3.14815"/>
+  <yPos value="10.933"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="255" green="0"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Retina_1" style="0" source="Retina_2" showlabel="0">
+  <start y="10.4432" x="-3.18907"/>
+  <curves>
+   <curve>
+    <C1 ypos="9.84854" xpos="-2.92744"/>
+    <C2 ypos="10.3405" xpos="-4.62055"/>
+    <end ypos="9.74402" xpos="-4.33708"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Retina_2 to Retina_1 Synapse 0 weight_update"/>
+ </projection>
+ <population name="FEF">
+  <xPos value="1.80423"/>
+  <yPos value="14.7111"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="56"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Thalamus" style="4" source="FEF" showlabel="0">
+  <start y="14.219" x="1.16546"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.338" xpos="0.615592"/>
+    <C2 ypos="14.0446" xpos="-0.637933"/>
+    <end ypos="12.4082" xpos="-0.680385"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D1" style="4" source="FEF" showlabel="0">
+  <start y="14.8511" x="2.63372"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.5407" xpos="3.48812"/>
+    <C2 ypos="13.2192" xpos="3.2728"/>
+    <end ypos="12.3914" xpos="3.29888"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Str_D1 Synapse 0 weight_update">
+   <Script name="DecayingAtFovea" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="SC_deep" style="4" source="FEF" showlabel="0">
+  <start y="14.2162" x="1.81304"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.40376" xpos="1.91822"/>
+    <C2 ypos="8.81723" xpos="-0.387654"/>
+    <end ypos="7.89125" xpos="-0.446712"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to SC_deep Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="0.6" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Str_D2" style="4" source="FEF" showlabel="0">
+  <start y="15.0379" x="2.63711"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.9576" xpos="5.51325"/>
+    <C2 ypos="14.4654" xpos="6.82086"/>
+    <end ypos="12.3686" xpos="6.82016"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to Str_D2 Synapse 0 weight_update">
+   <Script name="DecayingAtFovea" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="STN" style="4" source="FEF" showlabel="0">
+  <start y="14.9454" x="2.63732"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.3622" xpos="5.53576"/>
+    <C2 ypos="10.7627" xpos="4.86438"/>
+    <end ypos="10.1138" xpos="4.89422"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF to STN Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="3" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Thalamus">
+  <xPos value="-0.683478"/>
+  <yPos value="11.9082"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="255" green="128"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="70"/>
+  <y3D value="-2"/>
+  <z3D value="57"/>
+  <is_visualised value="1"/>
+ </population>
+ <projection destination="FEF" style="4" source="Thalamus" showlabel="0">
+  <start y="12.4082" x="-0.480809"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.2795" xpos="-0.534313"/>
+    <C2 ypos="13.0305" xpos="1.33951"/>
+    <end ypos="14.2191" xpos="1.48381"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to FEF Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D1" style="4" source="Thalamus" showlabel="0">
+  <start y="11.8683" x="0.150007"/>
+  <curves>
+   <curve>
+    <C1 ypos="11.8683" xpos="0.88341"/>
+    <C2 ypos="11.9169" xpos="2.01854"/>
+    <end ypos="11.9169" xpos="2.48073"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to Str_D1 Synapse 0 weight_update">
+   <Script name="DecayingAtFovea" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Str_D2" style="4" source="Thalamus" showlabel="0">
+  <start y="11.9019" x="0.15"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.2412" xpos="0.980478"/>
+    <C2 ypos="13.1775" xpos="4.89596"/>
+    <end ypos="11.909" xpos="5.98191"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to Str_D2 Synapse 0 weight_update">
+   <Script name="DecayingAtFovea" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:&#xa;    row = srcloc[1]&#xa;    j = 0&#xa;    for dstloc in dstlocs:    &#xa;      if srcloc == dstloc:&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="STN" style="4" source="Thalamus" showlabel="0">
+  <start y="11.4276" x="0.149972"/>
+  <curves>
+   <curve>
+    <C1 ypos="10.6206" xpos="1.56044"/>
+    <C2 ypos="9.84632" xpos="2.6707"/>
+    <end ypos="9.69975" xpos="4.08156"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Thalamus to STN Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="3" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="SC_sup">
+  <xPos value="-0.664104"/>
+  <yPos value="9.32518"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" red="128" green="0"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="70"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" style="4" source="SC_sup" showlabel="0">
+  <start y="8.82678" x="-0.807173"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.12601" xpos="-0.818196"/>
+    <C2 ypos="8.75461" xpos="-1.17939"/>
+    <end ypos="7.89125" xpos="-1.20051"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_sup to SC_deep Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="0.6" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Thalamus" style="4" source="SC_sup" showlabel="0">
+  <start y="9.8202" x="-0.659783"/>
+  <curves>
+   <curve>
+    <C1 ypos="10.3629" xpos="-0.659783"/>
+    <C2 ypos="10.874" xpos="-0.764479"/>
+    <end ypos="11.4052" xpos="-0.764479"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_sup to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <population name="SC_deep">
+  <xPos value="-0.717524"/>
+  <yPos value="7.39205"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" red="128" green="0"/>
+  <size value="1"/>
+  <tag value="7"/>
+  <x3D value="70"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" style="4" source="SC_deep" showlabel="1">
+  <start y="7.792" x="0.115841"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.28337" xpos="1.13425"/>
+    <C2 ypos="8.78676" xpos="0.442405"/>
+    <end ypos="7.89078" xpos="-0.14708"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_deep to SC_deep Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="2" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+  <synapseConnection name="SC_deep to SC_deep Synapse 1 weight_update">
+   <Script name="TectotectalInhibition" sigma="3" text="#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;&#x9;import math&#xa;&#x9;normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;&#x9;i = 0&#xa;&#x9;out = []&#xa;&#x9;for srcloc in srclocs:&#xa;&#x9;&#x9;j = 0&#xa;&#x9;&#x9;for dstloc in dstlocs:&#xa;            &#xa;&#x9;&#x9;&#x9;s1 = srcloc[1]&#xa;&#x9;&#x9;&#x9;# Invert one dimension of the sources prior to dist calculation:&#xa;&#x9;&#x9;&#x9;s0 = -1*(srcloc[0]-(49.0/2.0))&#xa;&#x9;&#x9;&#x9;s2 = srcloc[2]&#xa;&#x9;&#x9;&#x9;d1 = dstloc[1]&#xa;&#x9;&#x9;&#x9;d0 = dstloc[0]-(49.0/2.0)&#xa;&#x9;&#x9;&#x9;d2 = dstloc[2]&#xa;            &#xa;&#x9;&#x9;&#x9;dist = math.sqrt(math.pow((s0 - d0),2)&#xa;                             + math.pow((s1 - d1),2)&#xa;                             + math.pow((s2 - d2),2))&#xa;&#xa;&#x9;&#x9;&#x9;conn_weight = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;&#x9;&#x9;&#x9;if conn_weight > 0.001:&#xa;&#x9;&#x9;&#x9;&#x9;conn = (i,j,0,conn_weight)&#xa;&#x9;&#x9;&#x9;&#x9;out.append(conn)&#xa;&#xa;&#x9;&#x9;&#x9;j = j + 1&#xa;&#xa;&#x9;&#x9;i = i + 1&#xa;&#xa;&#x9;return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Thalamus" style="4" source="SC_deep" showlabel="0">
+  <start y="7.89086" x="-0.73069"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.48902" xpos="-0.713896"/>
+    <C2 ypos="8.35129" xpos="-0.266784"/>
+    <end ypos="8.52384" xpos="-0.114427"/>
+   </curve>
+   <curve>
+    <C1 ypos="8.84204" xpos="0.210842"/>
+    <C2 ypos="8.99011" xpos="0.40203"/>
+    <end ypos="9.61368" xpos="0.30116"/>
+   </curve>
+   <curve>
+    <C1 ypos="10.494" xpos="0.163609"/>
+    <C2 ypos="9.99422" xpos="-0.210199"/>
+    <end ypos="11.4082" xpos="-0.456146"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_deep to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <population name="Str_D1">
+  <xPos value="3.31151"/>
+  <yPos value="11.894"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="51" red="153" green="102"/>
+  <size value="1"/>
+  <tag value="8"/>
+  <x3D value="133"/>
+  <y3D value="0"/>
+  <z3D value="54"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SNr" style="0" source="Str_D1" showlabel="0">
+  <start y="11.3924" x="3.31924"/>
+  <curves>
+   <curve>
+    <C1 ypos="11.4429" xpos="3.31874"/>
+    <C2 ypos="9.11913" xpos="3.27675"/>
+    <end ypos="7.25544" xpos="3.21024"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Str_D1 to SNr Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1.5" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Str_D2">
+  <xPos value="6.8129"/>
+  <yPos value="11.8676"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="51" red="153" green="102"/>
+  <size value="1"/>
+  <tag value="9"/>
+  <x3D value="195"/>
+  <y3D value="0"/>
+  <z3D value="57"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="GPe" style="0" source="Str_D2" showlabel="0">
+  <start y="11.3741" x="6.85403"/>
+  <curves>
+   <curve>
+    <C1 ypos="11.7042" xpos="6.87979"/>
+    <C2 ypos="8.83008" xpos="6.73088"/>
+    <end ypos="7.268" xpos="6.73088"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Str_D2 to GPe Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1.5" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="STN">
+  <xPos value="4.91237"/>
+  <yPos value="9.61594"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="255"/>
+  <size value="1"/>
+  <tag value="10"/>
+  <x3D value="155"/>
+  <y3D value="0"/>
+  <z3D value="30"/>
+  <is_visualised value="1"/>
+ </population>
+ <projection destination="SNr" style="4" source="STN" showlabel="0">
+  <start y="9.11345" x="4.56073"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.8329" xpos="4.08193"/>
+    <C2 ypos="7.63182" xpos="3.65161"/>
+    <end ypos="7.25549" xpos="3.65161"/>
+   </curve>
+  </curves>
+  <synapseConnection name="STN to SNr Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="GPe" style="4" source="STN" showlabel="0">
+  <start y="9.11343" x="5.309"/>
+  <curves>
+   <curve>
+    <C1 ypos="8.84209" xpos="5.71775"/>
+    <C2 ypos="7.7772" xpos="6.35161"/>
+    <end ypos="7.26798" xpos="6.35161"/>
+   </curve>
+  </curves>
+  <synapseConnection name="STN to GPe Synapse 0 weight_update"/>
+ </projection>
+ <population name="GPe">
+  <xPos value="6.72445"/>
+  <yPos value="6.76637"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="11"/>
+  <x3D value="200"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SNr" style="0" source="GPe" showlabel="0">
+  <start y="6.72761" x="5.8884"/>
+  <curves>
+   <curve>
+    <C1 ypos="6.72761" xpos="4.80423"/>
+    <C2 ypos="6.74589" xpos="4.76335"/>
+    <end ypos="6.74589" xpos="4.05991"/>
+   </curve>
+  </curves>
+  <synapseConnection name="GPe to SNr Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="STN" style="0" source="GPe" showlabel="0">
+  <start y="7.26814" x="6.12663"/>
+  <curves>
+   <curve>
+    <C1 ypos="7.57094" xpos="5.56588"/>
+    <C2 ypos="8.66569" xpos="5.14217"/>
+    <end ypos="9.11259" xpos="5.14217"/>
+   </curve>
+  </curves>
+  <synapseConnection name="GPe to STN Synapse 0 weight_update"/>
+ </projection>
+ <population name="SNr">
+  <xPos value="3.22563"/>
+  <yPos value="6.76168"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="255" red="0" green="255"/>
+  <size value="1"/>
+  <tag value="12"/>
+  <x3D value="133"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_deep" style="0" source="SNr" showlabel="0">
+  <start y="6.77032" x="2.39404"/>
+  <curves>
+   <curve>
+    <C1 ypos="6.77032" xpos="1.6494"/>
+    <C2 ypos="7.70812" xpos="1.19634"/>
+    <end ypos="7.66884" xpos="0.115838"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SNr to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Thalamus" style="0" source="SNr" showlabel="0">
+  <start y="7.25525" x="2.92728"/>
+  <curves>
+   <curve>
+    <C1 ypos="9.26518" xpos="2.92728"/>
+    <C2 ypos="8.30555" xpos="1.24063"/>
+    <end ypos="11.4082" xpos="-0.174403"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SNr to Thalamus Synapse 0 weight_update"/>
+  <synapseConnection name="SNr to Thalamus Synapse 1 weight_update"/>
+ </projection>
+ <population name="FEF_add_noise">
+  <xPos value="-2.6314"/>
+  <yPos value="14.5701"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="FEF" style="4" source="FEF_add_noise" showlabel="0">
+  <start y="14.6347" x="-1.79865"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.6758" xpos="-1.24905"/>
+    <C2 ypos="14.6961" xpos="-0.0870098"/>
+    <end ypos="14.7411" xpos="0.970653"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF_add_noise to FEF Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="CogCont" style="4" source="FEF_add_noise" showlabel="0">
+  <start y="15.0701" x="-2.95413"/>
+  <curves>
+   <curve>
+    <C1 ypos="15.6659" xpos="-2.90419"/>
+    <C2 ypos="16.7704" xpos="-5.00518"/>
+    <end ypos="16.7582" xpos="-3.14528"/>
+   </curve>
+  </curves>
+  <synapseConnection name="FEF_add_noise to CogCont Synapse 0 weight_update">
+   <Script name="GaussianKernel" sigma="1" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma):&#xa;&#xa;  import math&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((srcloc[0] - dstloc[0]),2) + math.pow((srcloc[1] - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="SC_avg">
+  <xPos value="-0.697277"/>
+  <yPos value="5.54456"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="128" red="128" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="SC_avg_sum" style="4" source="SC_avg" showlabel="0">
+  <start y="5.05416" x="-0.66807"/>
+  <curves>
+   <curve>
+    <C1 ypos="4.48812" xpos="-0.66807"/>
+    <C2 ypos="4.45159" xpos="-0.693472"/>
+    <end ypos="4.32555" xpos="-0.693472"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg to SC_avg_sum Synapse 0 weight_update"/>
+ </projection>
+ <population name="CogCont">
+  <xPos value="-2.311"/>
+  <yPos value="16.7676"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="255" green="202"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Reflected" style="4" source="CogCont" showlabel="0">
+  <start y="16.8495" x="-1.47866"/>
+  <curves>
+   <curve>
+    <C1 ypos="16.9053" xpos="-0.0542183"/>
+    <C2 ypos="16.631" xpos="-1.69289"/>
+    <end ypos="16.6102" xpos="-0.259445"/>
+   </curve>
+  </curves>
+  <synapseConnection name="CogCont to Reflected Synapse 0 weight_update"/>
+ </projection>
+ <population name="Reflected">
+  <xPos value="0.574296"/>
+  <yPos value="16.6121"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="223" red="14" green="237"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="FEF" style="4" source="Reflected" showlabel="0">
+  <start y="16.6452" x="1.40726"/>
+  <curves>
+   <curve>
+    <C1 ypos="16.7082" xpos="2.64073"/>
+    <C2 ypos="15.8048" xpos="1.97347"/>
+    <end ypos="15.2162" xpos="1.9724"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Reflected to FEF Synapse 0 weight_update"/>
+ </projection>
+ <population name="LIP">
+  <xPos value="12.2565"/>
+  <yPos value="19.3738"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_D1" style="4" source="LIP" showlabel="0">
+  <start y="18.8655" x="12.9944"/>
+  <curves>
+   <curve>
+    <C1 ypos="18.1329" xpos="12.9944"/>
+    <C2 ypos="17.2936" xpos="13.8446"/>
+    <end ypos="17.2936" xpos="14.615"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Asstv_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_D2" style="4" source="LIP" showlabel="0">
+  <start y="19.3573" x="13.0854"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.3186" xpos="16.7045"/>
+    <C2 ypos="18.3094" xpos="18.7964"/>
+    <end ypos="17.4455" xpos="18.8382"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Asstv_D2 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_STN" style="4" source="LIP" showlabel="0">
+  <start y="19.2485" x="13.0851"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.0781" xpos="17.0707"/>
+    <C2 ypos="17.0465" xpos="17.3211"/>
+    <end ypos="15.3964" xpos="17.3259"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Asstv_STN Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_thal" style="4" source="LIP" showlabel="0">
+  <start y="18.8616" x="12.4568"/>
+  <curves>
+   <curve>
+    <C1 ypos="17.9745" xpos="12.9446"/>
+    <C2 ypos="16.7102" xpos="12.9453"/>
+    <end ypos="15.668" xpos="12.5364"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Asstv_thal Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Str_D2" style="4" source="LIP" showlabel="0">
+  <start y="18.8487" x="11.5527"/>
+  <curves>
+   <curve>
+    <C1 ypos="17.2881" xpos="9.36023"/>
+    <C2 ypos="17.0608" xpos="7.23175"/>
+    <end ypos="12.3676" xpos="7.08068"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Str_D2 Synapse 0 weight_update">
+   <Script name="ProAntiGaussian" sigma="2.5" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;#PARNAME=connType #LOC=2,1&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma,connType):&#xa;&#xa;  import math&#xa;  import random&#xa;  import sys&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;&#xa;    S1 = round( 25 + random.gauss(0, 1) )&#xa;    if connType==0:&#xa;      if srcloc[0]==0:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;    else: &#xa;      if srcloc[0]==0:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((S0 - dstloc[0]),2) + math.pow((S1 - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" connType="1"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+  <synapseConnection name="LIP to Str_D2 Synapse 1 weight_update">
+   <Script name="ProAntiGaussian" sigma="1.35" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;#PARNAME=connType #LOC=2,1&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma,connType):&#xa;&#xa;  import math&#xa;  import random&#xa;  import sys&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;&#xa;    S1 = round( 25 + random.gauss(0, 1) )&#xa;    if connType==0:&#xa;      if srcloc[0]==0:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;    else: &#xa;      if srcloc[0]==0:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((S0 - dstloc[0]),2) + math.pow((S1 - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" connType="0"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Str_D1" style="4" source="LIP" showlabel="0">
+  <start y="19.2846" x="11.4219"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.0405" xpos="8.24973"/>
+    <C2 ypos="17.9079" xpos="3.87692"/>
+    <end ypos="12.3929" xpos="3.68488"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to Str_D1 Synapse 0 weight_update">
+   <Script name="ProAntiGaussian" sigma="2.5" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;#PARNAME=connType #LOC=2,1&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma,connType):&#xa;&#xa;  import math&#xa;  import random&#xa;  import sys&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;&#xa;    S1 = round( 25 + random.gauss(0, 1) )&#xa;    if connType==0:&#xa;      if srcloc[0]==0:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;    else: &#xa;      if srcloc[0]==0:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((S0 - dstloc[0]),2) + math.pow((S1 - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" connType="0"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="FEF" style="4" source="LIP" showlabel="0">
+  <start y="19.4297" x="11.4219"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.4462" xpos="8.25853"/>
+    <C2 ypos="18.9549" xpos="2.81071"/>
+    <end ypos="15.2111" xpos="2.41739"/>
+   </curve>
+  </curves>
+  <synapseConnection name="LIP to FEF Synapse 0 weight_update">
+   <Script name="ProAntiGaussian" sigma="2.5" text="&#xa;#PARNAME=sigma #LOC=1,1&#xa;#HASWEIGHT&#xa;#PARNAME=connType #LOC=2,1&#xa;&#xa;def connectionFunc(srclocs,dstlocs,sigma,connType):&#xa;&#xa;  import math&#xa;  import random&#xa;  import sys&#xa;&#xa;  # Corrected normterm (2015/01/16):&#xa;  normterm = 1/(math.pow(sigma,2)*2*math.pi)&#xa;&#xa;  i = 0&#xa;  out = []&#xa;  for srcloc in srclocs:&#xa;    j = 0&#xa;&#xa;    S1 = round( 25 + random.gauss(0, 1) )&#xa;    if connType==0:&#xa;      if srcloc[0]==0:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;    else: &#xa;      if srcloc[0]==0:&#xa;        S0 = round( 36 + random.gauss(0, 1) )&#xa;      else:&#xa;        S0 = round( 11 + random.gauss(0, 1) )&#xa;&#xa;    for dstloc in dstlocs:&#xa;      dist = math.sqrt(math.pow((S0 - dstloc[0]),2) + math.pow((S1 - dstloc[1]),2) + math.pow((srcloc[2] - dstloc[2]),2))&#xa;&#xa;      gauss = normterm*math.exp(-0.5*math.pow(dist/sigma,2))&#xa;&#xa;      if gauss > 0.001:&#xa;        #sys.stdout.write('gauss>0.0001: i={0} gauss={1}'.format( i, gauss))&#xa;        conn = (i,j,0,gauss)&#xa;        out.append(conn)&#xa;&#xa;      j = j + 1&#xa;    i = i + 1&#xa;  #sys.stdout.write('out length: %d' % len(out))&#xa;  return out&#xa;" connType="0"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <population name="Asstv_D1">
+  <xPos value="15.4547"/>
+  <yPos value="16.92"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_SNr" style="0" source="Asstv_D1" showlabel="0">
+  <start y="16.3804" x="15.4315"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.8779" xpos="15.4315"/>
+    <C2 ypos="14.896" xpos="15.3938"/>
+    <end ypos="13.5655" xpos="15.3938"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_D1 to Asstv_SNr Synapse 0 weight_update"/>
+ </projection>
+ <population name="Asstv_D2">
+  <xPos value="19.5527"/>
+  <yPos value="16.9795"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_GPe" style="0" source="Asstv_D2" showlabel="0">
+  <start y="16.4408" x="19.4446"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.8588" xpos="19.4446"/>
+    <C2 ypos="14.7799" xpos="19.4436"/>
+    <end ypos="13.4974" xpos="19.4436"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_D2 to Asstv_GPe Synapse 0 weight_update"/>
+ </projection>
+ <population name="Asstv_STN">
+  <xPos value="17.3404"/>
+  <yPos value="14.9229"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_GPe" style="4" source="Asstv_STN" showlabel="0">
+  <start y="14.7404" x="18.1627"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.7533" xpos="18.7777"/>
+    <C2 ypos="13.9543" xpos="19.1447"/>
+    <end ypos="13.4981" xpos="19.1412"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_STN to Asstv_GPe Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_SNr" style="4" source="Asstv_STN" showlabel="1">
+  <start y="14.7148" x="16.4969"/>
+  <curves>
+   <curve>
+    <C1 ypos="14.7137" xpos="16.3288"/>
+    <C2 ypos="14.8126" xpos="15.6269"/>
+    <end ypos="13.5645" xpos="15.597"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_STN to Asstv_SNr Synapse 0 weight_update"/>
+ </projection>
+ <population name="Asstv_GPe">
+  <xPos value="19.4294"/>
+  <yPos value="13.0197"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_STN" style="0" source="Asstv_GPe" showlabel="0">
+  <start y="13.2207" x="18.5826"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.183" xpos="17.7417"/>
+    <C2 ypos="13.7042" xpos="17.3431"/>
+    <end ypos="14.3979" xpos="17.3604"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_GPe to Asstv_STN Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_SNr" style="0" source="Asstv_GPe" showlabel="1">
+  <start y="13.0014" x="18.5805"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.0014" xpos="16.758"/>
+    <C2 ypos="13.0701" xpos="16.74"/>
+    <end ypos="13.0701" xpos="16.2285"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_GPe to Asstv_SNr Synapse 0 weight_update"/>
+ </projection>
+ <population name="Asstv_SNr">
+  <xPos value="15.4001"/>
+  <yPos value="13.0778"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Asstv_thal" style="0" source="Asstv_SNr" showlabel="0">
+  <start y="13.1075" x="14.5617"/>
+  <curves>
+   <curve>
+    <C1 ypos="13.1887" xpos="12.9993"/>
+    <C2 ypos="13.9284" xpos="12.0528"/>
+    <end ypos="14.668" xpos="12.0401"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_SNr to Asstv_thal Synapse 0 weight_update"/>
+ </projection>
+ <population name="Asstv_thal">
+  <xPos value="12.0378"/>
+  <yPos value="15.1892"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="7"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LIP" style="4" source="Asstv_thal" showlabel="0">
+  <start y="15.668" x="11.7853"/>
+  <curves>
+   <curve>
+    <C1 ypos="16.5628" xpos="11.3441"/>
+    <C2 ypos="18.2762" xpos="11.5769"/>
+    <end ypos="18.8611" xpos="11.9395"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Asstv_thal to LIP Synapse 0 weight_update"/>
+ </projection>
+ <population name="InputL">
+  <xPos value="15.3692"/>
+  <yPos value="22.2738"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="LIP" style="4" source="InputL" showlabel="0">
+  <start y="21.7284" x="14.9975"/>
+  <curves>
+   <curve>
+    <C1 ypos="20.8917" xpos="14.9217"/>
+    <C2 ypos="20.6064" xpos="12.0564"/>
+    <end ypos="19.8571" xpos="12.0564"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputL to LIP Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_D1" style="4" source="InputL" showlabel="0">
+  <start y="21.7285" x="15.4182"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.3001" xpos="15.4182"/>
+    <C2 ypos="19.3114" xpos="15.4358"/>
+    <end ypos="17.386" xpos="15.4358"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputL to Asstv_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_D2" style="4" source="InputL" showlabel="0">
+  <start y="21.7292" x="15.8499"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.4564" xpos="15.8499"/>
+    <C2 ypos="19.4971" xpos="19.468"/>
+    <end ypos="17.4455" xpos="19.5221"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputL to Asstv_D2 Synapse 0 weight_update"/>
+ </projection>
+ <population name="InputR">
+  <xPos value="17.1695"/>
+  <yPos value="22.2997"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <genericInput dstPort="saccade" destination="InputR" source="SC_avg_sum" srcPort="saccade">
+  <start y="3.828970193862915" x="0.1413173973560333"/>
+  <curves>
+   <curve>
+    <C1 ypos="3.932820558547974" xpos="19.77355575561523"/>
+    <C2 ypos="29.0982723236084" xpos="2.566893815994263"/>
+    <end ypos="22.80401229858398" xpos="16.35353469848633"/>
+   </curve>
+  </curves>
+  <connection/>
+ </genericInput>
+ <projection destination="LIP" style="4" source="InputR" showlabel="0">
+  <start y="21.7599" x="16.783"/>
+  <curves>
+   <curve>
+    <C1 ypos="20.638" xpos="16.744"/>
+    <C2 ypos="20.3339" xpos="12.3594"/>
+    <end ypos="19.8568" xpos="12.3594"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputR to LIP Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_D1" style="4" source="InputR" showlabel="0">
+  <start y="21.76" x="17.0434"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.4742" xpos="17.0434"/>
+    <C2 ypos="18.8031" xpos="15.8763"/>
+    <end ypos="17.386" xpos="15.9087"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputR to Asstv_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Asstv_D2" style="4" source="InputR" showlabel="0">
+  <start y="21.7603" x="17.439"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.2541" xpos="17.439"/>
+    <C2 ypos="19.1913" xpos="19.9116"/>
+    <end ypos="17.4455" xpos="19.9194"/>
+   </curve>
+  </curves>
+  <synapseConnection name="InputR to Asstv_D2 Synapse 0 weight_update"/>
+ </projection>
+ <population name="PFC">
+  <xPos value="1.81171"/>
+  <yPos value="21.2594"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="1"/>
+ </population>
+ <projection destination="LIP" style="4" source="PFC" showlabel="0">
+  <start y="21.179" x="2.64682"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.4469" xpos="5.67266"/>
+    <C2 ypos="19.2652" xpos="8.74349"/>
+    <end ypos="19.4213" xpos="11.415"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to LIP Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" style="4" source="PFC" showlabel="0">
+  <start y="20.7505" x="1.61614"/>
+  <curves>
+   <curve>
+    <C1 ypos="18.0376" xpos="1.73891"/>
+    <C2 ypos="18.4973" xpos="1.42511"/>
+    <end ypos="15.2111" xpos="1.75318"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to FEF Synapse 0 weight_update">
+   <Script name="DecayingAtFovea_PFCinhib" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;  import sys&#xa;&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:    &#xa;    j = 0&#xa;    if srcloc[0] == 0:      &#xa;      for dstloc in dstlocs:&#xa;        row = dstloc[1]&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;        j = j + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+ <projection destination="Frontal_D1" style="4" source="PFC" showlabel="0">
+  <start y="21.7579" x="1.81764"/>
+  <curves>
+   <curve>
+    <C1 ypos="22.5299" xpos="1.81764"/>
+    <C2 ypos="22.5299" xpos="1.80912"/>
+    <end ypos="23.0573" xpos="1.80912"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to Frontal_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_D2" style="4" source="PFC" showlabel="0">
+  <start y="21.441" x="2.64559"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.5427" xpos="4.21344"/>
+    <C2 ypos="22.0028" xpos="4.80587"/>
+    <end ypos="23.0228" xpos="4.86081"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to Frontal_D2 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_STN" style="4" source="PFC" showlabel="0">
+  <start y="21.7591" x="2.04965"/>
+  <curves>
+   <curve>
+    <C1 ypos="22.7432" xpos="3.39332"/>
+    <C2 ypos="23.2368" xpos="3.52645"/>
+    <end ypos="24.7786" xpos="3.55215"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to Frontal_STN Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_thal" style="4" source="PFC" showlabel="0">
+  <start y="21.4873" x="0.978332"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.7651" xpos="-0.287148"/>
+    <C2 ypos="23.31" xpos="-0.797408"/>
+    <end ypos="24.8107" xpos="-0.755028"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to Frontal_thal Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="STN" style="4" source="PFC" showlabel="0">
+  <start y="20.7594" x="1.94621"/>
+  <curves>
+   <curve>
+    <C1 ypos="15.3599" xpos="1.94621"/>
+    <C2 ypos="19.0641" xpos="5.52547"/>
+    <end ypos="10.1159" xpos="5.21422"/>
+   </curve>
+  </curves>
+  <synapseConnection name="PFC to STN Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_D1">
+  <xPos value="1.81587"/>
+  <yPos value="23.5588"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Frontal_SNr" style="0" source="Frontal_D1" showlabel="0">
+  <start y="24.0544" x="1.77132"/>
+  <curves>
+   <curve>
+    <C1 ypos="25.8393" xpos="1.77132"/>
+    <C2 ypos="25.8393" xpos="1.81029"/>
+    <end ypos="27.057" xpos="1.81029"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_D1 to Frontal_SNr Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_D2">
+  <xPos value="5.04836"/>
+  <yPos value="23.5235"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Frontal_GPe" style="0" source="Frontal_D2" showlabel="0">
+  <start y="24.0184" x="5.11197"/>
+  <curves>
+   <curve>
+    <C1 ypos="25.6016" xpos="5.11197"/>
+    <C2 ypos="25.6369" xpos="5.13116"/>
+    <end ypos="27.09" xpos="5.13116"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_D2 to Frontal_GPe Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_STN">
+  <xPos value="3.32949"/>
+  <yPos value="25.2742"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="3"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Frontal_GPe" style="4" source="Frontal_STN" showlabel="0">
+  <start y="25.7806" x="3.82924"/>
+  <curves>
+   <curve>
+    <C1 ypos="26.3697" xpos="3.82924"/>
+    <C2 ypos="26.4412" xpos="4.64627"/>
+    <end ypos="27.0929" xpos="4.65752"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_STN to Frontal_GPe Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_SNr" style="4" source="Frontal_STN" showlabel="0">
+  <start y="25.7801" x="2.89312"/>
+  <curves>
+   <curve>
+    <C1 ypos="26.2192" xpos="2.89312"/>
+    <C2 ypos="26.4017" xpos="2.20717"/>
+    <end ypos="27.0597" xpos="2.22534"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_STN to Frontal_SNr Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_SNr">
+  <xPos value="1.81587"/>
+  <yPos value="27.5615"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="4"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Frontal_thal" style="0" source="Frontal_SNr" showlabel="0">
+  <start y="27.4314" x="0.982221"/>
+  <curves>
+   <curve>
+    <C1 ypos="27.364" xpos="-0.393389"/>
+    <C2 ypos="26.5599" xpos="-0.439938"/>
+    <end ypos="25.8117" xpos="-0.460648"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_SNr to Frontal_thal Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_GPe">
+  <xPos value="5.14582"/>
+  <yPos value="27.5951"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="5"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Frontal_SNr" style="0" source="Frontal_GPe" showlabel="0">
+  <start y="27.5659" x="4.31215"/>
+  <curves>
+   <curve>
+    <C1 ypos="27.5659" xpos="2.90946"/>
+    <C2 ypos="27.5606" xpos="2.91049"/>
+    <end ypos="27.5606" xpos="2.64989"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_GPe to Frontal_SNr Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_STN" style="0" source="Frontal_GPe" showlabel="0">
+  <start y="27.3333" x="4.31197"/>
+  <curves>
+   <curve>
+    <C1 ypos="27.0909" xpos="3.5316"/>
+    <C2 ypos="26.3593" xpos="3.48708"/>
+    <end ypos="25.7813" xpos="3.50087"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_GPe to Frontal_STN Synapse 0 weight_update"/>
+ </projection>
+ <population name="Frontal_thal">
+  <xPos value="-0.740446"/>
+  <yPos value="25.3079"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="6"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="PFC" style="4" source="Frontal_thal" showlabel="0">
+  <start y="24.8111" x="-0.422868"/>
+  <curves>
+   <curve>
+    <C1 ypos="23.0952" xpos="-0.422868"/>
+    <C2 ypos="22.7047" xpos="1.41295"/>
+    <end ypos="21.7607" xpos="1.39943"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Frontal_thal to PFC Synapse 0 weight_update"/>
+ </projection>
+ <population name="Instruction">
+  <xPos value="-3.08694"/>
+  <yPos value="21.0957"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="19"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="PFC" style="4" source="Instruction" showlabel="0">
+  <start y="21.1129" x="-2.25424"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.1129" xpos="-0.57713"/>
+    <C2 ypos="21.2268" xpos="0.245081"/>
+    <end ypos="21.2268" xpos="0.978251"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Instruction to PFC Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_D1" style="4" source="Instruction" showlabel="0">
+  <start y="21.5706" x="-2.25438"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.5706" xpos="-0.30222"/>
+    <C2 ypos="23.0892" xpos="-0.353658"/>
+    <end ypos="23.0892" xpos="0.982192"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Instruction to Frontal_D1 Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="Frontal_D2" style="4" source="Instruction" showlabel="0">
+  <start y="21.3886" x="-2.25438"/>
+  <curves>
+   <curve>
+    <C1 ypos="21.3886" xpos="1.34477"/>
+    <C2 ypos="23.2461" xpos="1.2923"/>
+    <end ypos="23.2461" xpos="4.21365"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Instruction to Frontal_D2 Synapse 0 weight_update"/>
+ </projection>
+ <population name="Distraction">
+  <xPos value="-4.09162"/>
+  <yPos value="19.5578"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="PFC" style="4" source="Distraction" showlabel="0">
+  <start y="19.4792" x="-3.25954"/>
+  <curves>
+   <curve>
+    <C1 ypos="19.4792" xpos="-0.706448"/>
+    <C2 ypos="20.7045" xpos="-0.839849"/>
+    <end ypos="20.9175" xpos="0.978621"/>
+   </curve>
+  </curves>
+  <synapseConnection name="Distraction to PFC Synapse 0 weight_update"/>
+ </projection>
+ <population name="SC_avg_sum">
+  <xPos value="-0.691795"/>
+  <yPos value="3.82653"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="1"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <projection destination="Thalamus" style="0" source="SC_avg_sum" showlabel="0">
+  <start y="4.30471" x="-1.52537"/>
+  <curves>
+   <curve>
+    <C1 ypos="6.58555" xpos="-2.87204"/>
+    <C2 ypos="9.91247" xpos="-2.54586"/>
+    <end ypos="11.7055" xpos="-1.51681"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg_sum to Thalamus Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="SC_deep" style="0" source="SC_avg_sum" showlabel="0">
+  <start y="4.32555" x="-1.27899"/>
+  <curves>
+   <curve>
+    <C1 ypos="5.14913" xpos="-2.24581"/>
+    <C2 ypos="6.82796" xpos="-2.0115"/>
+    <end ypos="7.0283" xpos="-1.551"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg_sum to SC_deep Synapse 0 weight_update"/>
+ </projection>
+ <projection destination="FEF" style="0" source="SC_avg_sum" showlabel="0">
+  <start y="4.11064" x="0.141292"/>
+  <curves>
+   <curve>
+    <C1 ypos="5.46555" xpos="1.86796"/>
+    <C2 ypos="8.49247" xpos="2.07414"/>
+    <end ypos="14.2111" xpos="1.91905"/>
+   </curve>
+  </curves>
+  <synapseConnection name="SC_avg_sum to FEF Synapse 0 weight_update"/>
+ </projection>
+ <population name="ReduceFixationInhibition">
+  <xPos value="-4.43782"/>
+  <yPos value="5.27657"/>
+  <animSpeed value="0.2"/>
+  <aspectRatio value="1.66667"/>
+  <colour blue="0" red="0" green="0"/>
+  <size value="1"/>
+  <tag value="2"/>
+  <x3D value="0"/>
+  <y3D value="0"/>
+  <z3D value="0"/>
+  <is_visualised value="0"/>
+ </population>
+ <genericInput dstPort="saccade" destination="ReduceFixationInhibition" source="SC_avg_sum" srcPort="saccade">
+  <start y="4.042257785797119" x="-1.525130033493042"/>
+  <curves>
+   <curve>
+    <C1 ypos="4.318117141723633" xpos="-2.590745687484741"/>
+    <C2 ypos="4.785382747650146" xpos="-2.53846549987793"/>
+    <end ypos="5.06124210357666" xpos="-3.604083776473999"/>
+   </curve>
+  </curves>
+  <connection/>
+ </genericInput>
+ <projection destination="SC_deep" style="4" source="ReduceFixationInhibition" showlabel="0">
+  <start y="5.77686" x="-3.71594"/>
+  <curves>
+   <curve>
+    <C1 ypos="6.66807" xpos="-3.71594"/>
+    <C2 ypos="7.41746" xpos="-2.48773"/>
+    <end ypos="7.40401" xpos="-1.55086"/>
+   </curve>
+  </curves>
+  <synapseConnection name="ReduceFixationInhibition to SC_deep Synapse 0 weight_update">
+   <Script name="DecayingAtFovea_PFCinhib" text="&#xa;#HASWEIGHT&#xa;&#xa;def connectionFunc(srclocs,dstlocs):&#xa;&#xa;  import math&#xa;  import sys&#xa;&#xa;&#xa;  i = 0&#xa;  # Magnification factor is&#xa;  # Mf = nfs/(E2*log(((window_size/2)/E2)+1));&#xa;  # where nfs is 50 and window_size is 61 in latest&#xa;  # model. This gives the best Mf of 7.7513.&#xa;  # See EyeFrame::fieldOfView for the field of view.&#xa;  # Note that field of view was 150 in Alex C's &#xa;  # model giving Mf=4.87 there. I've maintained the&#xa;  # same Mf of 4.87, but have ensured that my&#xa;  # fixations do not &quot;leak outside of the foveal mask.&#xa;  Mf = 4.87&#xa;  E2 = 2.5&#xa;  out = []&#xa;&#xa;  for srcloc in srclocs:    &#xa;    j = 0&#xa;    if srcloc[0] == 0:      &#xa;      for dstloc in dstlocs:&#xa;        row = dstloc[1]&#xa;        E = E2*(-1+math.exp(row/(Mf*E2)))&#xa;        # Where from the 7.5 here?&#xa;        res = 1/(1+math.exp(2*(7.5-E)))&#xa;        &#xa;        conn = (i,j,0,res)&#xa;        out.append(conn)&#xa;        j = j + 1&#xa;  return out&#xa;"/>
+   <Config weightProperty="w"/>
+  </synapseConnection>
+ </projection>
+</modelMetaData>

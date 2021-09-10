@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="PrestimIntegrate" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="Default">
+   <Regime name="Default">
+    <TimeDerivative variable="a">
+     <MathInline>(1/tau)*(in-a)</MathInline>
+    </TimeDerivative>
+    <OnCondition target_regime="Default">
+     <StateAssignment variable="out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a &lt; c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="Default">
+     <StateAssignment variable="out">
+      <MathInline>a-c</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a>=c &amp;&amp; a&lt;=1+c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="Default">
+     <StateAssignment variable="out">
+      <MathInline>1</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>a >1+c</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="Default">
+     <StateAssignment variable="instruct">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="Default">
+     <StateAssignment variable="instruct">
+      <MathInline>instructVal</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOn &amp;&amp; t &lt; timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias name="in" dimension="?">
+    <MathInline>instruct + (0.01 * randomNormal )</MathInline>
+   </Alias>
+   <StateVariable name="out" dimension="?"/>
+   <StateVariable name="a" dimension="?"/>
+   <StateVariable name="instruct" dimension="?"/>
+  </Dynamics>
+  <AnalogSendPort name="out"/>
+  <Parameter name="tau" dimension="?"/>
+  <Parameter name="c" dimension="?"/>
+  <Parameter name="timeOff" dimension="?"/>
+  <Parameter name="timeOn" dimension="?"/>
+  <Parameter name="instructVal" dimension="?"/>
+ </ComponentClass>
+</SpineML>

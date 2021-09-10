@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd">
+ <ComponentClass name="fixateInhibit" type="neuron_body">
+  <Annotation>
+   <SpineCreator/>
+  </Annotation>
+  <Dynamics initial_regime="New_Regime_1">
+   <Regime name="New_Regime_1">
+    <OnEvent target_regime="New_Regime_1" src_port="saccade">
+     <StateAssignment variable="saccadeOn">
+      <MathInline>50</MathInline>
+     </StateAssignment>
+    </OnEvent>
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>noisyOut</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOn &amp;&amp; t &lt; timeOff &amp;&amp; saccadeOn == 0</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>postStimOut</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOff &amp;&amp; saccadeOn == 0</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="saccadeOn">
+      <MathInline>saccadeOn - 1</MathInline>
+     </StateAssignment>
+     <StateAssignment variable="Out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>saccadeOn > 0</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias name="noisyOut" dimension="?">
+    <MathInline>outVal + ( noiseVal * randomNormal )</MathInline>
+   </Alias>
+   <StateVariable name="Out" dimension="?"/>
+   <StateVariable name="saccadeOn" dimension="?"/>
+  </Dynamics>
+  <AnalogSendPort name="Out"/>
+  <EventReceivePort name="saccade"/>
+  <Parameter name="timeOn" dimension="ms"/>
+  <Parameter name="timeOff" dimension="ms"/>
+  <Parameter name="outVal" dimension="?"/>
+  <Parameter name="noiseVal" dimension="?"/>
+  <Parameter name="postStimOut" dimension="?"/>
+ </ComponentClass>
+</SpineML>

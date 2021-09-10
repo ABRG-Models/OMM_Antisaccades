@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="addJitter">
+  <Dynamics initial_regime="New_Regime_1">
+   <Regime name="New_Regime_1">
+    <OnCondition target_regime="New_Regime_1">
+     <EventOut port="onSignal"/>
+     <Trigger>
+      <MathInline>t > onsetJitter &amp;&amp; t &lt; onsetJitter + 1</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="New_Regime_1">
+     <EventOut port="offSignal"/>
+     <Trigger>
+      <MathInline>t > offsetJitter &amp;&amp; &lt; offsetJitter + 1</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias dimension="?" name="offsetJitter">
+    <MathInline>onsetJitter + duration</MathInline>
+   </Alias>
+   <Alias dimension="?" name="durationOut">
+    <MathInline>duration</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="testJitter"/>
+  </Dynamics>
+  <AnalogSendPort name="durationOut"/>
+  <AnalogSendPort name="testJitter"/>
+  <EventSendPort name="onSignal"/>
+  <EventSendPort name="offSignal"/>
+  <Parameter dimension="ms" name="onsetJitter"/>
+  <Parameter dimension="?" name="duration"/>
+ </ComponentClass>
+</SpineML>
