@@ -1,5 +1,7 @@
 # OMM_Antisaccades
-ABRG Oculomotor model extended to make antisaccade decisions
+ABRG Oculomotor model extended to make antisaccade decisions.
+
+The antisaccade portion of this model is due to Jennifer Lewis. Jennifer's model is built as an addition to the Oculomotor model of the Gurney group, which is described in the paper [James et. al., Integrating Brain and Biomechanical Models—A New Paradigm for Understanding Neuro-muscular Control, Frontiers 2018](https://www.frontiersin.org/articles/10.3389/fnins.2018.00039/full).
 
 This is a [SpineML](http://spineml.github.io) model, which is opened and run with [SpineCreator](http://spineml.github.io/spinecreator/).
 
