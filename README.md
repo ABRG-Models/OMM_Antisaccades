@@ -7,7 +7,11 @@ This is a [SpineML](http://spineml.github.io) model, which is opened and run wit
 
 SpineCreator will require you to build BRAHMS, SpineML_PreFlight and you will need to git clone SpineML_2_BRAHMS in your home directory. Follow the instructions to build SpineCreator for [Linux](http://spineml.github.io/spinecreator/sourcelin/) or [Mac](http://spineml.github.io/spinecreator/source/).
 
-You will also need to compile the BRAHMS components from this repository. For this, you will need jsoncpp built and installed in /usr/local. Obtain jsoncpp:
+You will also need to compile the BRAHMS components from this repository. For this, you will need a compiler, libeigen3 and jsoncpp built and installed in /usr/local. Install dependencies:
+```
+sudo apt install build-essential libeigen3-dev
+```
+Obtain jsoncpp:
 ```
 mkdir src && pushd src
 git clone git@github.com:open-source-parsers/jsoncpp.git
