@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="WorldToBrain">
+  <Dynamics initial_regime="default">
+   <Regime name="default">
+    <OnCondition target_regime="default">
+     <StateAssignment variable="shift">
+      <MathInline>randomNormal*3</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t == 0</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias dimension="?" name="out">
+    <MathInline>in + (in*shift*noise)</MathInline>
+   </Alias>
+   <Alias dimension="?" name="noise">
+    <MathInline>randomNormal * sigma</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="shift"/>
+  </Dynamics>
+  <AnalogReceivePort dimension="?" name="in"/>
+  <AnalogSendPort name="out"/>
+  <AnalogSendPort name="shift"/>
+  <Parameter dimension="?" name="sigma"/>
+ </ComponentClass>
+</SpineML>

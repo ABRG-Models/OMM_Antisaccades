@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="PFCinputTemp">
+  <Dynamics initial_regime="New_Regime_1">
+   <Regime name="New_Regime_1">
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>outMod</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= minTimeOn &amp;&amp; t &lt; timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>0</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias dimension="?" name="timeOn">
+    <MathInline>minTimeOn + ( 350 - ( attention * 350 ) )</MathInline>
+   </Alias>
+   <Alias dimension="?" name="outMod">
+    <MathInline>outMax * attention</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="Out"/>
+  </Dynamics>
+  <AnalogSendPort name="Out"/>
+  <Parameter dimension="ms" name="minTimeOn"/>
+  <Parameter dimension="ms" name="timeOff"/>
+  <Parameter dimension="?" name="outMax"/>
+  <Parameter dimension="?" name="attention"/>
+ </ComponentClass>
+</SpineML>
