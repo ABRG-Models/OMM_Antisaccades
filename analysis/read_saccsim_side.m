@@ -2,7 +2,7 @@
 
 stim_on = 350;
 min_outlier = 180;
-model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e5';
+model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e15';
 SS = csvread ( [model_log_path '/run/saccsim_side.log'], 1 , 0);
 eyeRx = SS(:,8);
 eyeRy = SS(:,9);

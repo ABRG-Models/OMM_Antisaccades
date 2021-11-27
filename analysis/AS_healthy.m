@@ -1,5 +1,5 @@
 % Antisaccdes healthy is e5
-model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e5/log/';
+model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e15/log/';
 
 [worldout, count] = load_sc_data ([model_log_path 'World_out_log.bin'], 2500);
 worldout = reshape (worldout, 50, 50, []);
