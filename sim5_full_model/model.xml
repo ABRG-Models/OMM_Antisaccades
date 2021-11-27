@@ -1,0 +1,2636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LL:SpineML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.shef.ac.uk/SpineMLNetworkLayer" xmlns:LL="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer" xsi:schemaLocation="http://www.shef.ac.uk/SpineMLLowLevelNetworkLayer SpineMLLowLevelNetworkLayer.xsd http://www.shef.ac.uk/SpineMLNetworkLayer SpineMLNetworkLayer.xsd" name="Oculomotor Model lumcomp arith">
+    <LL:Population>
+        <LL:Neuron name="World" size="2500" url="WorldToBrain.xml">
+            <Property name="sigma" dimension="?">
+                <FixedValue value="7"/>
+            </Property>
+            <Property name="shift" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="Retina_1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_World_to_Retina_1_syn0.bin" num_connections="87360" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="World to Retina_1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile1.bin" num_elements="87360"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="World to Retina_1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Retina_2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_World_to_Retina_2_syn0.bin" num_connections="87360" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="World to Retina_2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile2.bin" num_elements="87360"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="World to Retina_2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="FEF_add_noise">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="World to FEF_add_noise Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="World to FEF_add_noise Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Retina_1" size="2500" url="LINret.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile3.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile4.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_sup">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Retina_1 to SC_sup Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Retina_1 to SC_sup Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="2"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Retina_2" size="2500" url="LINret.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="30"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile5.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile6.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="Retina_1">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Retina_2 to Retina_1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Retina_2 to Retina_1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1.2"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="FEF" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile7.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile8.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile9.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="Thalamus">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="FEF to Thalamus Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="3"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_to_Str_D1_syn0.bin" num_connections="2500" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF to Str_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile10.bin" num_elements="2500"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF to Str_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_to_SC_deep_syn0.bin" num_connections="31504" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile11.bin" num_elements="31504"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="4"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_to_Str_D2_syn0.bin" num_connections="2500" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF to Str_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile12.bin" num_elements="2500"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF to Str_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="STN">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_to_STN_syn0.bin" num_connections="355344" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF to STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile13.bin" num_elements="355344"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF to STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="6"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Thalamus" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile14.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile15.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile16.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Thalamus to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Thalamus to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_Thalamus_to_Str_D1_syn0.bin" num_connections="2500" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="Thalamus to Str_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile17.bin" num_elements="2500"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Thalamus to Str_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_Thalamus_to_Str_D2_syn0.bin" num_connections="2500" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="Thalamus to Str_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile18.bin" num_elements="2500"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Thalamus to Str_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="STN">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_Thalamus_to_STN_syn0.bin" num_connections="355344" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="Thalamus to STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile19.bin" num_elements="355344"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Thalamus to STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="3"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="SC_sup" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile20.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile21.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile22.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_SC_sup_to_SC_deep_syn0.bin" num_connections="31504" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_sup to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile23.bin" num_elements="31504"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_sup to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="10"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Thalamus">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SC_sup to Thalamus Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_sup to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.3"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="SC_deep" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile24.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile25.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile26.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_SC_deep_to_SC_deep_syn0.bin" num_connections="220356" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_deep to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile27.bin" num_elements="220356"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_SC_deep_to_SC_deep_syn1.bin" num_connections="355344" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="SC_deep to SC_deep Synapse 1 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile51.bin" num_elements="355344"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to SC_deep Synapse 1 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Thalamus">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SC_deep to Thalamus Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_deep to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.6"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Str_D1" size="2500" url="D1MSN.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.05"/>
+            </Property>
+            <Property name="da" dimension="?">
+                <FixedValue value="0.5"/>
+            </Property>
+            <Property name="w" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile28.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile29.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SNr">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_Str_D1_to_SNr_syn0.bin" num_connections="141476" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="Str_D1 to SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile30.bin" num_elements="141476"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Str_D1 to SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Str_D2" size="2500" url="D2MSN.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.05"/>
+            </Property>
+            <Property name="da" dimension="?">
+                <FixedValue value="0.5"/>
+            </Property>
+            <Property name="w" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile31.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile32.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="GPe">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_Str_D2_to_GPe_syn0.bin" num_connections="141476" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="Str_D2 to GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile33.bin" num_elements="141476"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Str_D2 to GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="STN" size="2500" url="LINexp.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="5"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.9"/>
+            </Property>
+            <Property name="w" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="neg_rev_pot" dimension="?">
+                <FixedValue value="-0.4"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile34.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile35.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SNr">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="STN to SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="STN to SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.00096"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="GPe">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="STN to GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="STN to GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.0004"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="GPe" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile36.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile37.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile38.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SNr">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="GPe to SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="GPe to SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.4"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="STN">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="GPe to STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="GPe to STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="N">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1.4"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="SNr" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile39.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile40.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile41.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SNr to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SNr to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="7.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Thalamus">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SNr to Thalamus Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SNr to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="3"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="SNr to Thalamus Synapse 1 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SNr to Thalamus Synapse 1 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="FEF_add_noise" size="2500" url="LINlinearNoisy.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="20"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile42.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="out" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile43.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+            <Property name="sa" dimension="?">
+                <ValueList>
+                    <BinaryFile file_name="explicitDataBinaryFile44.bin" num_elements="2500"/>
+                </ValueList>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_add_noise_to_FEF_syn0.bin" num_connections="87360" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="50"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF_add_noise to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile45.bin" num_elements="87360"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF_add_noise to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="CogCont">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_FEF_add_noise_to_CogCont_syn0.bin" num_connections="87360" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="FEF_add_noise to CogCont Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile46.bin" num_elements="87360"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="FEF_add_noise to CogCont Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="inW">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="SC_avg" size="2500" url="threshpass.xml">
+            <Property name="min" dimension="?">
+                <FixedValue value="0.1"/>
+            </Property>
+            <Property name="max" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="inhibit_thresh" dimension="?">
+                <FixedValue value="0.05"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="SC_avg_sum">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="SC_avg to SC_avg_sum Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_avg to SC_avg_sum Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="CogCont" size="2500" url="InhibFEF.xml"/>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="Reflected">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_CogCont_to_Reflected_syn0.bin" num_connections="2500" explicit_delay_flag="1" packed_data="true"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="CogCont to Reflected Synapse 0 weight_update" url="Weight.xml" input_src_port="outMirror" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="CogCont to Reflected Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Reflected" size="2500" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?"/>
+            <Property name="out" dimension="?"/>
+            <Property name="sa" dimension="?"/>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="50"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="50"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Reflected to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Reflected to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="LIP" size="2" url="PFCLIN.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="30"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="0.01"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="grid.xml" seed="123" minimum_distance="0">
+            <Property name="numNeurons" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="rowLen" dimension="?">
+                <FixedValue value="2"/>
+            </Property>
+            <Property name="x" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="y" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="z" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="t" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </Layout>
+        <LL:Projection dst_population="Asstv_D1">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="LIP to Asstv_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Asstv_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_D2">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="LIP to Asstv_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Asstv_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_STN">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="LIP to Asstv_STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Asstv_STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_thal">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="LIP to Asstv_thal Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.9"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Asstv_thal Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_LIP_to_Str_D2_syn0.bin" num_connections="258" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="LIP to Str_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile47.bin" num_elements="258"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Str_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="6"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_LIP_to_Str_D2_syn1.bin" num_connections="98" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="LIP to Str_D2 Synapse 1 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile48.bin" num_elements="98"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Str_D2 Synapse 1 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Str_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_LIP_to_Str_D1_syn0.bin" num_connections="258" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="LIP to Str_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile49.bin" num_elements="258"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to Str_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="6"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_LIP_to_FEF_syn0.bin" num_connections="258" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="LIP to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile55.bin" num_elements="258"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="LIP to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="5.5"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_D1" size="2" url="AsstvMSN.xml">
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="DA" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Asstv_SNr">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_D1 to Asstv_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_D1 to Asstv_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_D2" size="2" url="AsstvMSN.xml">
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="DA" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Asstv_GPe">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_D2 to Asstv_GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_D2 to Asstv_GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_STN" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.25"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Asstv_GPe">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="Asstv_STN to Asstv_GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.9"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_STN to Asstv_GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_SNr">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="Asstv_STN to Asstv_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.9"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_STN to Asstv_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_GPe" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Asstv_STN">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_GPe to Asstv_STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_GPe to Asstv_STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_SNr">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_GPe to Asstv_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.3"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_GPe to Asstv_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_SNr" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Asstv_thal">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_SNr to Asstv_thal Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_SNr to Asstv_thal Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Asstv_thal" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="LIP">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Asstv_thal to LIP Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.9"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Asstv_thal to LIP Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="InputL" size="1" url="LIPinput.xml">
+            <Property name="outVal" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="postStimOut" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="timeOn" dimension="?">
+                <FixedValue value="10000"/>
+            </Property>
+            <Property name="Out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="trackSaccade" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="LIP">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputL to LIP Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.15"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputL to LIP Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputL to Asstv_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputL to Asstv_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputL to Asstv_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputL to Asstv_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="InputR" size="1" url="LIPinput.xml">
+            <Property name="outVal" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="1.5"/>
+            </Property>
+            <Property name="postStimOut" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="timeOn" dimension="?">
+                <FixedValue value="450"/>
+            </Property>
+            <Property name="Out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="trackSaccade" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <LL:Input src="SC_avg_sum" src_port="saccade" dst_port="saccade">
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="0"/>
+                    </Delay>
+                </AllToAllConnection>
+            </LL:Input>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="LIP">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="1" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputR to LIP Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.25"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputR to LIP Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="1" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputR to Asstv_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputR to Asstv_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Asstv_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="1" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="InputR to Asstv_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="InputR to Asstv_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="PFC" size="2" url="PFCLIN.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="0.1"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="LIP">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                    <Connection src_neuron="0" dst_neuron="1" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="PFC to LIP Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.24"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to LIP Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_PFC_to_FEF_syn0.bin" num_connections="2500" explicit_delay_flag="0" packed_data="true"/>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </ConnectionList>
+                <LL:WeightUpdate name="PFC to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <BinaryFile file_name="explicitDataBinaryFile50.bin" num_elements="2500"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.25"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_D1">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="PFC to Frontal_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to Frontal_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_D2">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="PFC to Frontal_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to Frontal_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_STN">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="PFC to Frontal_STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to Frontal_STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_thal">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="PFC to Frontal_thal Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to Frontal_thal Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="STN">
+            <LL:Synapse>
+                <ConnectionList>
+                    <BinaryFile file_name="conn_PFC_to_STN_syn0.bin" num_connections="2500" explicit_delay_flag="1" packed_data="true"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="PFC to STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.22"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="PFC to STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_D1" size="2" url="AsstvMSN.xml">
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="DA" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Frontal_SNr">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_D1 to Frontal_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_D1 to Frontal_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_D2" size="2" url="AsstvMSN.xml">
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+            <Property name="DA" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Frontal_GPe">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_D2 to Frontal_GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_D2 to Frontal_GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_STN" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.25"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Frontal_GPe">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="Frontal_STN to Frontal_GPe Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <Value index="0" value="0.9"/>
+                            <Value index="1" value="0.9"/>
+                            <Value index="2" value="20"/>
+                            <Value index="3" value="0.9"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_STN to Frontal_GPe Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_SNr">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="Frontal_STN to Frontal_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <ValueList>
+                            <Value index="0" value="0.9"/>
+                            <Value index="1" value="0.9"/>
+                            <Value index="2" value="20"/>
+                            <Value index="3" value="0.9"/>
+                        </ValueList>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_STN to Frontal_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_SNr" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Frontal_thal">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_SNr to Frontal_thal Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_SNr to Frontal_thal Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_GPe" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="-0.2"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Frontal_SNr">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_GPe to Frontal_SNr Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-0.3"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_GPe to Frontal_SNr Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_STN">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_GPe to Frontal_STN Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="-1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_GPe to Frontal_STN Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Frontal_thal" size="2" url="LINlinear.xml">
+            <Property name="p" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="c" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="a" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="sa" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="PFC">
+            <LL:Synapse>
+                <OneToOneConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="1"/>
+                    </Delay>
+                </OneToOneConnection>
+                <LL:WeightUpdate name="Frontal_thal to PFC Synapse 0 weight_update" url="Weight.xml" input_src_port="out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Frontal_thal to PFC Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Instruction" size="1" url="PFCinputMain.xml">
+            <Property name="outVal" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="postStimOut" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="timeOn" dimension="?">
+                <FixedValue value="250"/>
+            </Property>
+            <Property name="timeOff" dimension="?">
+                <FixedValue value="450"/>
+            </Property>
+            <Property name="Out" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="PFC">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="Instruction to PFC Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Instruction to PFC Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_D1">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="Instruction to Frontal_D1 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Instruction to Frontal_D1 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="Frontal_D2">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="0" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="Instruction to Frontal_D2 Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.2"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Instruction to Frontal_D2 Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="Distraction" size="1" url="PFCinputSimple.xml">
+            <Property name="timeOn" dimension="ms">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="timeOff" dimension="ms">
+                <FixedValue value="1000"/>
+            </Property>
+            <Property name="outVal" dimension="?">
+                <NormalDistribution mean="0.15" variance="0.25" seed="0"/>
+            </Property>
+            <Property name="noiseVal" dimension="?">
+                <FixedValue value="0.6"/>
+            </Property>
+            <Property name="postStimOut" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="Out" dimension="?">
+                <FixedValue value="0.2"/>
+            </Property>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="PFC">
+            <LL:Synapse>
+                <ConnectionList>
+                    <Connection src_neuron="0" dst_neuron="1" delay="1"/>
+                </ConnectionList>
+                <LL:WeightUpdate name="Distraction to PFC Synapse 0 weight_update" url="Weight.xml" input_src_port="Out" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0.4"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="Distraction to PFC Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="A">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+    <LL:Population>
+        <LL:Neuron name="SC_avg_sum" size="1" url="LINsaccade.xml">
+            <Property name="m" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="b" dimension="?">
+                <FixedValue value="0"/>
+            </Property>
+            <Property name="tau" dimension="?">
+                <FixedValue value="10"/>
+            </Property>
+            <Property name="max" dimension="?">
+                <FixedValue value="1"/>
+            </Property>
+            <Property name="a" dimension="?"/>
+            <Property name="y" dimension="?"/>
+        </LL:Neuron>
+        <Layout url="none.xml" seed="123" minimum_distance="0"/>
+        <LL:Projection dst_population="Thalamus">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="10"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="SC_avg_sum to Thalamus Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="2.5"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_avg_sum to Thalamus Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="SC_deep">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="5"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="SC_avg_sum to SC_deep Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="0"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_avg_sum to SC_deep Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+        <LL:Projection dst_population="FEF">
+            <LL:Synapse>
+                <AllToAllConnection>
+                    <Delay Dimension="ms">
+                        <FixedValue value="10"/>
+                    </Delay>
+                </AllToAllConnection>
+                <LL:WeightUpdate name="SC_avg_sum to FEF Synapse 0 weight_update" url="Weight.xml" input_src_port="a" input_dst_port="in">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1.5"/>
+                    </Property>
+                </LL:WeightUpdate>
+                <LL:PostSynapse name="SC_avg_sum to FEF Synapse 0 postsynapse" url="passthrough.xml" input_src_port="out" input_dst_port="in" output_src_port="out" output_dst_port="S">
+                    <Property name="w" dimension="?">
+                        <FixedValue value="1"/>
+                    </Property>
+                </LL:PostSynapse>
+            </LL:Synapse>
+        </LL:Projection>
+    </LL:Population>
+</LL:SpineML>

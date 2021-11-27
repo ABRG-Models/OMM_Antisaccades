@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<SpineML xsi:schemaLocation="http://www.shef.ac.uk/SpineMLComponentLayer SpineMLComponentLayer.xsd" xmlns="http://www.shef.ac.uk/SpineMLComponentLayer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ComponentClass type="neuron_body" name="PFCinputSimple">
+  <Dynamics initial_regime="New_Regime_1">
+   <Regime name="New_Regime_1">
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>noisyOut</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOn &amp;&amp; t &lt; timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+    <OnCondition target_regime="New_Regime_1">
+     <StateAssignment variable="Out">
+      <MathInline>postStimOut</MathInline>
+     </StateAssignment>
+     <Trigger>
+      <MathInline>t >= timeOff</MathInline>
+     </Trigger>
+    </OnCondition>
+   </Regime>
+   <Alias dimension="?" name="noisyOut">
+    <MathInline>outVal + ( noiseVal * randomNormal )</MathInline>
+   </Alias>
+   <Alias dimension="?" name="recOutVal">
+    <MathInline>outVal</MathInline>
+   </Alias>
+   <StateVariable dimension="?" name="Out"/>
+  </Dynamics>
+  <AnalogSendPort name="Out"/>
+  <AnalogSendPort name="recOutVal"/>
+  <Parameter dimension="ms" name="timeOn"/>
+  <Parameter dimension="ms" name="timeOff"/>
+  <Parameter dimension="?" name="outVal"/>
+  <Parameter dimension="?" name="noiseVal"/>
+  <Parameter dimension="?" name="postStimOut"/>
+ </ComponentClass>
+</SpineML>
