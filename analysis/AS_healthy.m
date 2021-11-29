@@ -15,6 +15,9 @@ lipfef = reshape (lipfef, 50, 50, []);
 [pfcstn, count] = load_sc_data ([model_log_path 'PFC_to_STN_Synapse_0_postsynapse_out_log.bin'], 2500);
 pfcstn = reshape (pfcstn, 50, 50, []);
 
+[snr, count] = load_sc_data ([model_log_path 'SNr_out_log.bin'], 2500);
+snr = reshape (snr, 50, 50, []);
+
 [pfcfef, count] = load_sc_data ([model_log_path 'PFC_to_FEF_Synapse_0_postsynapse_out_log.bin'], 2500);
 pfcfef = reshape (pfcfef, 50, 50, []);
 
@@ -24,7 +27,7 @@ pfcfef = reshape (pfcfef, 50, 50, []);
 % A 3D view
 v=[30,35];
 
-t = 600;
+t = t+5
 
 figure(1);
 surf (worldout(:,:,t));
@@ -46,6 +49,10 @@ figure(5);
 surf (pfcstn(:,:,t));
 view(v); title('PFC to STN')
 
-figure(6);
+figure(6)
 surf (pfcfef(:,:,t));
 view(v); title('PFC to FEF')
+
+figure(7);
+surf (snr(:,:,t));
+view(v); title('SNr')
