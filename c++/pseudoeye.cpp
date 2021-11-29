@@ -367,7 +367,7 @@ Symbol COMPONENT_CLASS_CPP::event(Event* event)
             this->tRotZ.clear();
             double xstep = (thx_thy.first-rotX)/50.0;
             double ystep = (thx_thy.second-rotY)/50.0;
-            bout << "Setting up new tRotX target: " << thx_thy.first << " and tRotY target:" << thx_thy.second << D_INFO;
+            //bout << "Setting up new tRotX target: " << thx_thy.first << " and tRotY target:" << thx_thy.second << D_INFO;
             for (unsigned int i=0; i<50; ++i) {
                 this->tRotX.push_back (thx_thy.first - i*xstep);
                 this->tRotY.push_back (thx_thy.second - i*ystep);
@@ -380,7 +380,7 @@ Symbol COMPONENT_CLASS_CPP::event(Event* event)
         // Update rotX,rotY,rotZ if there's a trajectory to follow
         if (!this->tRotX.empty()) {
             this->rotX = this->tRotX.back();
-            bout << "tRotX is not empty, set rotX to " << this->rotX << D_INFO;
+            //bout << "tRotX is not empty, set rotX to " << this->rotX << D_INFO;
             this->tRotX.pop_back();
             this->rotY = this->tRotY.back();
             this->tRotY.pop_back();

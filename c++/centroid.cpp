@@ -188,7 +188,8 @@ Symbol COMPONENT_CLASS_CPP::event(Event* event)
             // Any thresholding of the output of this could be done in
             // the SpineCreator "receiver" population, or here, if we
             // want to save computations.
-            bout << "setting   outputstate[" << centroid_i << "] to sigma_a = " << sigma_a << D_INFO;
+            // Debugging removed:
+            // bout << "setting   outputstate[" << centroid_i << "] to sigma_a = " << sigma_a << D_INFO;
             outputstate[centroid_i] = sigma_a;
         }
         this->centroid.setContent (outputstate, 0, this->neuronsPerPopulation * sizeof(DOUBLE));

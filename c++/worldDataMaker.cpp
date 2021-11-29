@@ -384,30 +384,34 @@ Symbol COMPONENT_CLASS_CPP::event(Event* event)
         double curRotY = *(++rotComponent);
         double curRotZ = *(++rotComponent);
 #endif
+
+#ifdef STDOUT_ROTATIONS_DEBUG
         bout << "WDM: rotationsOut X/Y/Z: "
              << curRotX << "," << curRotY << "," << curRotZ << D_INFO;
-
+#endif
+#ifdef EYE_OFFSET_DEBUG
         // Output eye's offset into a file so we can track what's going on
         stringstream iss;
         iss << this->saveDirPath << "/info" << this->time->now << ".dat";
         ofstream info;
         info.open (iss.str().c_str(), ios::out|ios::trunc);
-
         info << "X/Y/Z from curRotX etc: " << curRotX << "," << curRotY << "," << curRotZ << endl;
-
+#endif
         // Calculate new luminances here.
         this->eye.setOffset (curRotX, curRotY, curRotZ);
 
+#ifdef EYE_OFFSET_DEBUG
         info << this->time->now << "ms: RotX:" << this->eye.getRotX() << " RotY:" << this->eye.getRotY() << " RotZ:" << this->eye.getRotZ() << endl; // etc
         info.close();
-
+#endif
         this->eye.setEyeField (this->world.luminanceCoords);
 
+#ifdef SAVE_FOR_MOVIES
         // Save the cortical sheet so we can make movies with it.
         stringstream cmss;
         cmss << this->saveDirPath << "/cortmap" << this->time->now << ".dat";
         this->eye.saveCorticalSheet (cmss.str());
-
+#endif
         // Write out luminances to the model
         this->corticalSheet.setContent (this->eye.getCorticalSheetData(), 0, this->neuronsPerPopulation * sizeof(DOUBLE));
 
