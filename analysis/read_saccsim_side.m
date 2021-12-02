@@ -4,7 +4,7 @@ args=argv();
 if (length(args) > 0)
   model_log_path = args{1};
 else
-  model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e15';
+  model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e5';
 end
 
 stim_on = 350;

@@ -1,10 +1,10 @@
 % Antisaccdes healthy is e5
-model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e15/log/';
+model_log_path = '/home/seb/SpineML_2_BRAHMS/temp/Oculomotor_Model_lumcomp_arith_e5/log/';
 
 [worldout, count] = load_sc_data ([model_log_path 'World_out_log.bin'], 2500);
 worldout = reshape (worldout, 50, 50, []);
-[fefin, count] = load_sc_data ([model_log_path 'FEF_in_log.bin'], 2500);
-fefin = reshape (fefin, 50, 50, []);
+#[fefin, count] = load_sc_data ([model_log_path 'FEF_in_log.bin'], 2500);
+#fefin = reshape (fefin, 50, 50, []);
 [fefout, count] = load_sc_data ([model_log_path 'FEF_out_log.bin'], 2500);
 fefout = reshape (fefout, 50, 50, []);
 
@@ -33,9 +33,9 @@ figure(1);
 surf (worldout(:,:,t));
 view(v); title('World')
 
-figure(2);
-surf (fefin(:,:,t));
-view(v); title('FEF in')
+#figure(2);
+#surf (fefin(:,:,t));
+#view(v); title('FEF in')
 
 figure(3);
 surf (fefout(:,:,t));
